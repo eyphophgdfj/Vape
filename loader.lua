@@ -1,6 +1,6 @@
 local Args = select(1, ...) or {}
 local _, subbed = pcall(function()
-	return game:HttpGet('https://github.com/new-qwertyui/CatV5')
+	return game:HttpGet('https://github.com/MaxlaserTech/CatV6')
 end)
 
 local commit = subbed:find('currentOid')
@@ -18,5 +18,5 @@ shared.VapeDeveloper = Args.Developer or false
 if Args.Developer then
 	loadstring(readfile('catrewrite/libraries/run.lua'), 'run.lua')(Args, commit)
 else
-	loadstring(game:HttpGet(`https://raw.githubusercontent.com/new-qwertyui/CatV5/{commit}/libraries/run.lua`), 'run.lua')(Args, commit)
+	loadstring(game:HttpGet(`https://raw.githubusercontent.com/MaxlaserTech/CatV6/{commit}/libraries/run.lua`), 'run.lua')(Args, commit)
 end
