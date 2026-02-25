@@ -18,11 +18,14 @@ local downloader = Instance.new('TextLabel')
 downloader.Size = UDim2.new(1, 0, 0, 40)
 downloader.BackgroundTransparency = 1
 downloader.TextStrokeTransparency = 0
+downloader.Text = ''
 downloader.TextSize = 20
 downloader.TextColor3 = Color3.new(1, 1, 1)
 downloader.Font = Enum.Font.Arimo
 downloader.Parent = gethui and gethui() or cloneref(game:GetService('Players')).LocalPlayer:WaitForChild('PlayerGui', 9e9)
 getgenv().catdownloader = downloader
+
+print('yo')
 
 local function downloadFile(path, func)
 	if not isfile(path) then
@@ -47,8 +50,10 @@ end
 
 local function wipeFolder(path)
 	if not isfolder(path) then return end
+	print(path)
 	repeat pcall(delfolder, path); task.wait() until not isfolder(path)
 	makefolder(path)
+	warn(path)
 end
 
 for _, folder in {'catrewrite', 'catrewrite/games', 'catrewrite/profiles', 'catrewrite/assets', 'catrewrite/libraries', 'catrewrite/guis'} do
