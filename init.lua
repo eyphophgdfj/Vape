@@ -10,6 +10,15 @@ else
         makefolder('catrewrite')
     end
 
+    local _, subbed = pcall(function()
+        return game:HttpGet('https://github.com/MaxlaserTech/CatV6')
+    end)
+
+    local commit = subbed:find('currentOid')
+    commit = commit and subbed:sub(commit + 13, commit + 52) or nil
+    commit = commit and #commit == 40 and commit or 'main'
+    Arguments.Commit = commit
+    
     local function downloadFile(path, func)
         if not isfile(path) then
             local suc, res = pcall(function()
