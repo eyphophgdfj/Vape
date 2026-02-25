@@ -66,8 +66,9 @@ if not shared.VapeDeveloper then
 		wipeFolder('catrewrite/guis')
 		wipeFolder('catrewrite/libraries')
 	end
-
-	writefile('catrewrite/profiles/commit.txt', commit)
 end
+
+warn(commit)
+writefile('catrewrite/profiles/commit.txt', commit)
 
 return loadstring(downloadFile('catrewrite/main.lua'), 'main')(Args)
