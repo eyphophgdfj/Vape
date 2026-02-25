@@ -49,11 +49,16 @@ local function downloadFile(path, func)
 end
 
 local function wipeFolder(path)
-	if not isfolder(path) then return end
-	print(path)
-	repeat pcall(delfolder, path); task.wait() until not isfolder(path)
-	makefolder(path)
-	warn(path)
+	if isfolder(path) then
+		print('Wiping', path)
+		for _, v in listfiles(path) do
+			if isfile(v) then
+				delfile(v)
+				print('Deleted', v)
+			end
+		end
+		print('Wiped', path)
+	end
 end
 
 for _, folder in {'catrewrite', 'catrewrite/games', 'catrewrite/profiles', 'catrewrite/assets', 'catrewrite/libraries', 'catrewrite/guis'} do
