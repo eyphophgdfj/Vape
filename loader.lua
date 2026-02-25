@@ -14,6 +14,8 @@ if not isfolder('catrewrite/libraries') then
 	makefolder('catrewrite/libraries')
 end
 
+print(commit)
+
 shared.VapeDeveloper = Args.Developer or false
 if Args.Developer then
 	loadstring(readfile('catrewrite/libraries/run.lua'), 'run.lua')(Args, commit)
