@@ -48,12 +48,14 @@ local function downloadFile(path, func)
 	return (func or readfile)(path)
 end
 
+warn('pmo')
+
 local function wipeFolder(path)
 	if isfolder(path) then
 		print('Wiping', path)
 		for _, v in listfiles(path) do
 			if isfile(v) then
-				pcall(delfile, v)
+				pcall(function() delfile(v); end)
 				print('Deleted', v)
 			end
 		end
