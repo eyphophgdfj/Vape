@@ -10,6 +10,10 @@ else
         makefolder('catrewrite')
     end
 
+    if not isfolder('catrewrite/profiles') then
+        makefolder('catrewrite/profiles')
+    end
+
     local _, subbed = pcall(function()
         return game:HttpGet('https://github.com/MaxlaserTech/CatV6')
     end)
@@ -20,10 +24,11 @@ else
     Arguments.Commit = commit
 
     local function downloadFile(path, func)
-        if not isfile(path) then
+        if not isfile(path) or (not isfile('catrewrite/profiles/commit.txt') or readfile('catrewrite/profiles/commit.txt') ~= commit) then
             local suc, res = pcall(function()
                 return game:HttpGet('https://raw.githubusercontent.com/MaxlaserTech/CatV6/'.. commit.. '/' ..select(1, path:gsub('catrewrite/', '')), true)
             end)
+            print('updated')
             if not suc or res == '404: Not Found' then
                 error(res)
             end
