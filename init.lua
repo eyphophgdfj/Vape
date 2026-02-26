@@ -1,6 +1,6 @@
 local Arguments = ... or {}
 if not Arguments.Key then
-    Arguments.Key = script_key or 'unknown key'
+    Arguments.Key = script_key or 'b'
 end
 
 if shared.VapeDeveloper then
